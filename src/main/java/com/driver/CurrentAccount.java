@@ -3,7 +3,7 @@ package com.driver;
 public class CurrentAccount extends BankAccount{
     String tradeLicenseId; //consists of Uppercase English characters only
 
-    public String getTradeLicenceID() {
+    public String getTradeLicenseId() {
         return tradeLicenseId;
     }
 

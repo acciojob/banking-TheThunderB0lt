@@ -4,7 +4,7 @@ public class SavingsAccount extends BankAccount{
     double rate;
     double maxWithdrawalLimit;
 
-    public double getMaxWithdrwall() {
+    public double MaxWithdrawalLimit() {
         return maxWithdrawalLimit;
     }
 
