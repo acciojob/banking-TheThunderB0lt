@@ -8,9 +8,9 @@ this: the this keyword refers to the current object in a method/constructor.
 */
 
 public class BankAccount {
-    private final String name; //non-changeable(Fixed username)
+    private String name; //non-changeable(Fixed username)
     private double balance; //changeable(bcoz of amount adding & withdrawing)
-    private final double minBalance; //non-changeable(fixed balance amt after withdrwaing/adding)
+    private double minBalance; //non-changeable(fixed balance amt after withdrwaing/adding)
 
     public BankAccount(String name, double balance, double minBalance) {
         this.name = name;
@@ -45,19 +45,19 @@ public class BankAccount {
 
     public void deposit(double amount) { //add amount to balance
         // We are tring to depositing amount, so we check if the amount is > 0 then we add with currentBalance
-        if (amount > 0) {
-            balance = balance + amount;
-        }
+        this.balance += amount;
     }
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
         // here we are trying to withdrawing the amount, we have to take care minbalance also. 
         // we check if the withdrawing amount is >= minBalance
-        if (balance - amount >= minBalance) {
-            balance -= amount;
-        } else {
+
+        double rem = this.balance - amount;
+        if (rem < this.minBalance) {
             throw new Exception("Insufficient Balance");
+        } else {
+            this.balance = rem;
         }
     }
 
@@ -67,13 +67,12 @@ public class BankAccount {
     }
     
     // Getter
-    public double getMinBalance() {
-        return minBalance;
-    }
-    
-    // Getter
     public double getBalance() {
         return balance;
     }
-
+    
+    // Getter
+    public double getMinBalance() {
+        return minBalance;
+    }
 }
